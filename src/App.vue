@@ -1,13 +1,16 @@
 <template>
-  <router-view />
+  <v-app id="app">
+    <router-view />
+  </v-app>
 </template>
 
 <style lang="scss">
 html,
 body {
   font-family: 'Roboto', sans-serif;
-  color: #2c3e50;
-  height: 100%;
+}
+
+#app {
   background: #f1f1f1;
 }
 </style>
