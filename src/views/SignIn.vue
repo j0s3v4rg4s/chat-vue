@@ -38,7 +38,7 @@ import Login from "@/components/sigin/Login.vue";
 import Vue from "vue";
 
 export default Vue.extend({
-  name: "SigIn",
+  name: "SignIn",
   components: {
     Register,
     Login
@@ -79,7 +79,7 @@ export default Vue.extend({
     transform-origin: center right;
 
     .card {
-      position: absolute;
+      //position: absolute;
       backface-visibility: hidden;
       width: 100%;
 
