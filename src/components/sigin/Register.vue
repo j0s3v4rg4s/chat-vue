@@ -1,6 +1,6 @@
 <template>
   <v-form :valid="valid" @submit.prevent="register">
-    <avatar class="avatar"/>
+    <avatar class="avatar" :user="registerData.user" />
     <v-text-field outlined label="Name" requerid :rules="fieldRule" v-model="registerData.name" />
     <v-text-field outlined label="email" requerid :rules="emailRules" v-model="registerData.user" />
     <v-text-field outlined label="Password" :rules="fieldRule" v-model="registerData.password" />
@@ -37,19 +37,21 @@ export default mixins(userMixin).extend({
     error: null
   }),
   methods: {
-    register() {
+    async register() {
       if (!this.$data.valid) {
         return;
       }
       const avatar = "https://api.adorable.io/avatars/197/" + this.registerData.user;
       this.load = true;
-      this.createUser(this.registerData.name, this.registerData.user, this.registerData.password, avatar)
-        .catch(err => {
-          this.error = err.message;
-        })
-        .finally(() => {
-          this.load = false;
-        });
+      try {
+        await this.createUser(this.registerData.name, this.registerData.user, this.registerData.password, avatar);
+        this.$router.push("/");
+      } catch (err) {
+        console.log(err);
+        this.error = err.message;
+      } finally {
+        this.load = false;
+      }
     }
   }
 });

@@ -1,8 +1,8 @@
 <script lang="ts">
-import Vue from 'vue';
-import * as firebase from 'firebase/app';
-import 'firebase/auth';
-import 'firebase/database';
+import Vue from "vue";
+import * as firebase from "firebase/app";
+import "firebase/auth";
+import "firebase/database";
 export default Vue.extend({
   methods: {
     async createUser(name: string, email: string, password: string, image: string) {
@@ -10,7 +10,7 @@ export default Vue.extend({
       await Promise.all([
         userData.user?.updateProfile({
           displayName: name,
-          photoURL: image,
+          photoURL: image
         }),
         firebase
           .database()
@@ -18,10 +18,10 @@ export default Vue.extend({
           .set({
             uid: userData.user?.uid,
             name,
-            avataar: image,
-          }),
+            avataar: image
+          })
       ]);
-    },
-  },
+    }
+  }
 });
 </script>

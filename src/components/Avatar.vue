@@ -3,17 +3,17 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
+import Vue from "vue";
 export default Vue.extend({
-  name: 'Avatar',
+  name: "Avatar",
   props: {
-    user: String,
+    user: String
   },
   computed: {
     avatarImage() {
-      return 'https://api.adorable.io/avatars/197/' + this.user;
-    },
-  },
+      return "https://api.adorable.io/avatars/197/" + this.user;
+    }
+  }
 });
 </script>
 
