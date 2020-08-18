@@ -1,8 +1,9 @@
 import Vue from "vue";
-import VueRx from "vue-rx";
 import App from "./App.vue";
 import vuetify from "./plugins/vuetify";
 import router from "./router";
+
+import store from "./store";
 import * as firebase from "firebase/app";
 import "firebase/auth";
 
@@ -18,18 +19,9 @@ firebase.initializeApp({
   appId: "1:514219578910:web:b2418ecb43579a05fb400f",
   measurementId: "G-DB48RN3HSR"
 });
-
-Vue.use(VueRx);
-const vu = new Vue({
+new Vue({
   vuetify,
+  store,
   router,
-  data: () => ({
-    tempo: null as firebase.User | null
-  }),
-  mounted() {
-    firebase.auth().onAuthStateChanged(usr => {
-      this.tempo = usr;
-    });
-  },
   render: h => h(App)
 }).$mount("#app");
